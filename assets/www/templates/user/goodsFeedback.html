@@ -1,0 +1,34 @@
+<ion-nav-view name="goodsFeedback">
+  <ion-view view-title="商品需求反馈">
+    <!--头部标题-->
+    <ion-header-bar class="bar-positive">
+      <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+      <div class="topBarCommonC2">商品需求反馈</div>
+      <div class="topBarCommonC3"></div>
+    </ion-header-bar>
+    <ion-scroll class="has-header" style="position:absolute;width:100%;height:calc(100% - 74px);">
+      <div class="goodsFeedbackName">商&nbsp;品&nbsp;名:&nbsp;<input class="goodsFeedbackInput1" type="text" placeholder="请输入商品名" ng-change="changeGoodsName(goodsName)" ng-model="goodsName" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+      <div class="goodsFeedbackimg">
+        <p>商品图片:</p>
+        <img src=" " alt="" ng-click="pickImg()" id="goodsFeedbackTopImg">
+      </div>
+      <div class="goodsFeedbackSeparate"></div>
+      <div class="goodsFeedbackSuggestion">
+        <div>商品说明:</div>
+        <textarea placeholder="请输入商品说明" ng-change="changeGoodsExplain(goodsExplain)" ng-model="goodsExplain" ng-focus="Focus1()" ng-blur="Blur1()"></textarea>
+      </div>
+      <div class="goodsFeedbackName">每日用量:&nbsp;<input class="goodsFeedbackInput1" type="text" placeholder="请输入每日用量" ng-change="changeGoodsDaySum(goodsDaySum)" ng-model="goodsDaySum" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+      <div class="goodsFeedbackName">送货地址:&nbsp;<input class="goodsFeedbackInput1" type="text" placeholder="请输入送货地址" ng-change="changeGoodsAddress(goodsAddress)" ng-model="goodsAddress" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+      <div class="goodsFeedbackName">
+        <div style="float:left;margin-right:13px;">单位类型:</div>
+        <div class="goodsFeedbackC1"><input type="radio" name="goodsFeedbackRadio" ng-click="personalClick($event,1)">&nbsp;<div class="goodsFeedbackC2" ng-click="personalClick($event,1)">公司食堂</div>&nbsp;&nbsp;</div>
+        <div class="goodsFeedbackC1"><input type="radio" name="goodsFeedbackRadio" ng-click="personalClick($event,2)">&nbsp;<div class="goodsFeedbackC2" ng-click="personalClick($event,2)">酒店</div>&nbsp;&nbsp;</div>
+        <div class="goodsFeedbackC1"><input type="radio" name="goodsFeedbackRadio" ng-click="personalClick($event,3)">&nbsp;<div class="goodsFeedbackC2" ng-click="personalClick($event,3)">代理商</div>&nbsp;&nbsp;</div>
+        <div class="goodsFeedbackC1"><input type="radio" name="goodsFeedbackRadio" ng-click="personalClick($event,4)">&nbsp;<div class="goodsFeedbackC2" ng-click="personalClick($event,4)">其他</div>&nbsp;&nbsp;</div>
+      </div>
+      <div class="goodsFeedbackSeparate2"></div>
+      <div class="goodsFeedbackButton" ng-click="submit()">提交</div>
+
+    </ion-scroll>
+  </ion-view>
+</ion-nav-view>

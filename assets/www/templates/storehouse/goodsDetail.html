@@ -1,0 +1,190 @@
+<ion-header-bar class="positive" id="goodsDetailTopBar" style="opacity:0;box-shadow:0px 0px 20px 0px #949292;" >
+  <div style="color:#58A243" class="">
+    <div class="topBarCommonC2">商品详情</div>
+  </div>
+</ion-header-bar>
+  <div id="goodsDetailLeftId" class="topBarCommonC4 has-header" ng-click="back()"><img style="width:100%;height:100%;" src="img/return1.png" alt=""></div>
+  <div id="goodsDetailRightId" class="topBarCommonC5 has-header" ng-click="share()" style="opacity:0;"><img style="width:100%;height:100%;" src="img/share3.png" alt=""></div>
+
+<ion-content scroll={{phoneFlag}} id="goodsDetailContentScroll" lazy-scroll style="opacity:0;">
+  <div class="goodsDetailScroll" id="goodsDetailScroll_1" ng-if="!phoneFlag">
+
+    <ion-slide-box class="goodsDetailTop" delegate-handle="slideimgs">
+      <ion-slide ng-repeat="x in detail.images" ng-if="detail.images.length>0">
+        <img style="width:100%;height:100%;opacity:0;" src={{x}} onload={$(this).fadeTo("slow",1);} onerror="this.src='img/lvnongLogo3.png'"/>
+      </ion-slide>
+      <ion-slide style="height:100%;" ng-if="detail.images.length<=0">
+        <img src="img/lvnongLogo3.png" style="height:100%;">
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="goodsDetailTheme">{{detail.productName}}</div>
+    <div class="goodsDetailWeight" ng-if="firstPrice">
+      <div ng-if="firstPrice">
+        <p>数量{{firstPrice.limitCount}}&nbsp;<span>起批</span></p>
+        <span>￥{{detail.is_acitvity==1 ? firstPrice.activityPrice : firstPrice.price}}</span>
+      </div>
+      <div ng-repeat="item in middlePrices track by $index">
+        <p>数量{{item.limitCount + 1}}-{{getNextLimitCount($index)}}</p>
+        <span>￥{{detail.is_acitvity==1 ? item.activityPrice : item.price}}</span>
+      </div>
+      <div ng-if="lastPrice">
+        <p>数量>{{lastPrice.limitCount}}</p>
+        <span>￥{{detail.is_acitvity==1 ? lastPrice.activityPrice : lastPrice.price}}</span>
+      </div>
+      <div ng-if="detail.prices.length%3==1 || detail.prices.length%3==2" style="border-right: 1px solid white;"></div>
+      <div ng-if="detail.prices.length%3==1"></div>
+    </div>
+    <div class="goodsDetailExplain">规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格:&nbsp;{{detail.propertyStr}}
+    </div>
+    <div class="goodsDetailExplain" ng-if="detail.status==0">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存:&nbsp;预售</div>
+    <div class="goodsDetailExplain" ng-if="detail.status==1">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存:&nbsp;正常出售</div>
+    <div class="goodsDetailExplain">发货方式:&nbsp;{{detail.deliverGoods_type == 1 ? '绿农网平台发货' : '联盟商家发货'}}</div>
+    <!--<div class="goodsDetailExplain">上市时间:&nbsp;{{detail.saleTime | date:'yyyy.MM.dd'}}</div>-->
+    <!--<div class="goodsDetailExplain">体&nbsp;&nbsp;验&nbsp;&nbsp;店:&nbsp;{{}}</div>-->
+    <div class="goodsDetailSeparate"></div>
+    <div class="goodsDetailnformation">
+      <div ng-if="showType" class="goodsDetailnformationSelected" ng-click="changeType(0)">商品详情</div>
+      <div ng-if="!showType" ng-click="changeType(0)">商品详情</div>
+      <div style="width: 1px; margin: auto; background-color: #E0E0E0"></div>
+      <div ng-if="!showType" class="goodsDetailnformationSelected" ng-click="changeType(1)">商品溯源</div>
+      <div ng-if="showType && detail.sourceInfo!=null && detail.sourceInfo!=''" ng-click="changeType(1)">商品溯源</div>
+      <div ng-if="showType && (detail.sourceInfo==null || detail.sourceInfo=='')" ng-click="goodsAlert()">商品溯源</div>
+    </div>
+    <!--<div ng-repeat="img in item.images"><img class="goodsDetailimg" src="{{img}}" /></div>-->
+    <div ng-if="showType" class="goodsDetailWords">
+
+    </div>
+    <div ng-if="!showType" class="goodsDetailWords">
+      <div style="width: 100%; height: auto;overflow: hidden">
+        <p style="width: 100%; height: 100px;margin: auto;text-align: center;font-size: 18px;line-height: 100px;color: #1B1E24">- 产品溯源 -</p>
+        <div class="goodsResource" ng-if="detail.quality">品&nbsp;&nbsp;&nbsp;&nbsp;质:&nbsp;{{detail.quality}}</div>
+        <div class="goodsResourceSaperateLine"></div>
+        <!--<div class="goodsResource">施&nbsp;&nbsp;&nbsp;&nbsp;肥:&nbsp;预售预售预售预售预售预售预售预售预售预售预售预售预售预售</div>-->
+        <!--<div class="goodsResourceSaperateLine"></div>-->
+        <!--<div class="goodsResource">土&nbsp;&nbsp;&nbsp;&nbsp;质:&nbsp;预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售</div>-->
+        <!--<div class="goodsResourceSaperateLine"></div>-->
+        <!--<div class="goodsResource"><img class="goodsDetailimg" src="{{detail.farmImage}}" /></div>-->
+        <div class="goodsDetailWords2"></div>
+      </div>
+    </div>
+
+    <div class="goodsConnectFarmSum" ng-click="jsGoFarm(detail.farmId)" ng-if="detail.farmId>0">
+      <div class="goodsConnectFarmC1">产地</div>
+      <div class="goodsConnectFarmC2">
+        <div class="goodsConnectFarmC3"><img class="goodsConnectFarmC5" src={{detail.farmImage}} onerror="this.src='img/lvnongLogo3.png'"/></div>
+        <div class="goodsConnectFarmC4">
+          <p>来自绿农网农场:{{detail.farmName}}</p>
+          <div class="goodsConnectFarmC6">{{detail.farmSummary}}</div>
+        </div>
+        <div class="goodsConnectFarmC7"><i class="icon ion-ios-arrow-right"></i></div>
+      </div>
+    </div>
+
+    <div class="goodsDetailReadyBottom" style="padding-bottom: 20px;">已加载全部</div>
+  </div>
+
+  <div ng-if="phoneFlag">
+
+    <ion-slide-box class="goodsDetailTop" delegate-handle="slideimgs">
+      <ion-slide ng-repeat="x in detail.images" ng-if="detail.images.length>0">
+        <img style="width:100%;height:100%;opacity:0;" src={{x}} onload={$(this).fadeTo("slow",1);} onerror="this.src='img/lvnongLogo3.png'"/>
+      </ion-slide>
+      <ion-slide style="height:100%;" ng-if="detail.images.length<=0">
+        <img src="img/lvnongLogo3.png" style="height:100%;">
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="goodsDetailTheme">{{detail.productName}}</div>
+    <div class="goodsDetailWeight" ng-if="firstPrice">
+      <div ng-if="firstPrice">
+        <p>数量{{firstPrice.limitCount}}&nbsp;<span>起批</span></p>
+        <span>￥{{detail.is_acitvity==1 ? firstPrice.activityPrice : firstPrice.price}}</span>
+      </div>
+      <div ng-repeat="item in middlePrices track by $index">
+        <p>数量{{item.limitCount + 1}}-{{getNextLimitCount($index)}}</p>
+        <span>￥{{detail.is_acitvity==1 ? item.activityPrice : item.price}}</span>
+      </div>
+      <div ng-if="lastPrice">
+        <p>数量>{{lastPrice.limitCount}}</p>
+        <span>￥{{detail.is_acitvity==1 ? lastPrice.activityPrice : lastPrice.price}}</span>
+      </div>
+      <div ng-if="detail.prices.length%3==1 || detail.prices.length%3==2" style="border-right: 1px solid white;"></div>
+      <div ng-if="detail.prices.length%3==1"></div>
+    </div>
+    <div class="goodsDetailExplain">规&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格:&nbsp;{{detail.propertyStr}}
+    </div>
+    <div class="goodsDetailExplain" ng-if="detail.status==0">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存:&nbsp;预售</div>
+    <div class="goodsDetailExplain" ng-if="detail.status==1">库&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存:&nbsp;正常出售</div>
+    <div class="goodsDetailExplain">发货方式:&nbsp;{{detail.deliverGoods_type == 1 ? '绿农网平台发货' : '联盟商家发货'}}</div>
+    <!--<div class="goodsDetailExplain">上市时间:&nbsp;{{detail.saleTime | date:'yyyy.MM.dd'}}</div>-->
+    <!--<div class="goodsDetailExplain">体&nbsp;&nbsp;验&nbsp;&nbsp;店:&nbsp;{{}}</div>-->
+    <div class="goodsDetailSeparate"></div>
+    <div class="goodsDetailnformation">
+      <div ng-if="showType" class="goodsDetailnformationSelected" ng-click="changeType(0)">商品详情</div>
+      <div ng-if="!showType" ng-click="changeType(0)">商品详情</div>
+      <div style="width: 1px; margin: auto; background-color: #E0E0E0"></div>
+      <div ng-if="!showType" class="goodsDetailnformationSelected" ng-click="changeType(1)">商品溯源</div>
+      <div ng-if="showType && detail.sourceInfo!=null && detail.sourceInfo!=''" ng-click="changeType(1)">商品溯源</div>
+      <div ng-if="showType && (detail.sourceInfo==null || detail.sourceInfo=='')" ng-click="goodsAlert()">商品溯源</div>
+    </div>
+    <!--<div ng-repeat="img in item.images"><img class="goodsDetailimg" src="{{img}}" /></div>-->
+    <div ng-if="showType" class="goodsDetailWords">
+
+    </div>
+    <div ng-if="!showType" class="goodsDetailWords">
+      <div style="width: 100%; height: auto;overflow: hidden">
+        <p style="width: 100%; height: 100px;margin: auto;text-align: center;font-size: 18px;line-height: 100px;color: #1B1E24">- 产品溯源 -</p>
+        <div class="goodsResource" ng-if="detail.quality">品&nbsp;&nbsp;&nbsp;&nbsp;质:&nbsp;{{detail.quality}}</div>
+        <div class="goodsResourceSaperateLine"></div>
+        <!--<div class="goodsResource">施&nbsp;&nbsp;&nbsp;&nbsp;肥:&nbsp;预售预售预售预售预售预售预售预售预售预售预售预售预售预售</div>-->
+        <!--<div class="goodsResourceSaperateLine"></div>-->
+        <!--<div class="goodsResource">土&nbsp;&nbsp;&nbsp;&nbsp;质:&nbsp;预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售预售</div>-->
+        <!--<div class="goodsResourceSaperateLine"></div>-->
+        <!--<div class="goodsResource"><img class="goodsDetailimg" src="{{detail.farmImage}}" /></div>-->
+        <div class="goodsDetailWords2"></div>
+      </div>
+    </div>
+
+    <div class="goodsConnectFarmSum" ng-click="jsGoFarm(detail.farmId)" ng-if="detail.farmId>0">
+      <div class="goodsConnectFarmC1">产地</div>
+      <div class="goodsConnectFarmC2">
+        <div class="goodsConnectFarmC3"><img class="goodsConnectFarmC5" src={{detail.farmImage}} onerror="this.src='img/lvnongLogo3.png'"/></div>
+        <div class="goodsConnectFarmC4">
+          <div class="goodsConnectFarmC8">来自绿农网农场:{{detail.farmName}}</div>
+          <div class="goodsConnectFarmC6">{{detail.farmSummary}}</div>
+        </div>
+        <div class="goodsConnectFarmC7"><i class="icon ion-ios-arrow-right"></i></div>
+      </div>
+    </div>
+
+    <div class="goodsDetailReadyBottom" style="padding-bottom: 20px;">已加载全部</div>
+  </div>
+
+</ion-content>
+
+<ion-footer-bar style="height: 55px;padding:1px;opacity:0;" class="resetRedNumberGoodsDetail" id="goodsDetailBottomId">
+  <div class="goodsDetailBottom">
+    <div class="goodsDetailBottomC1" ng-click="connect()">
+      <img style="width:20px;height:20px;margin-top:8px;" src="img/kefu2.png" alt="">
+      <p>客服</p>
+    </div>
+    <div class="goodsDetailBottomC1" ng-click="collection()">
+      <!--<i ng-if="!ifCollection" class="icon ion-ios-star-outline goodsDetailBottomIcon"></i>-->
+      <!--<i ng-if="ifCollection" class="icon ion-ios-star goodsDetailBottomIcon"></i>-->
+      <img ng-if="ifCollection==null" style="width:20px;height:20px;margin-top:8px;" src="img/collection1.png" alt="">
+      <img ng-if="ifCollection!=null" style="width:20px;height:20px;margin-top:8px;" src="img/collection2.png" alt="">
+      <p>收藏</p>
+    </div>
+    <div class="goodsDetailBottomC1" ng-click="goCart()">
+      <img style="width:20px;height:20px;margin-top:8px;" src="img/cart2.png" alt="">
+      <p>购物车</p>
+    </div>
+    <div class="goodsDetailBottomC2" ng-click="addToCart()" ng-if="detail.stock>0">
+      <div class="goodsDetailBottomC3">加入购物车</div>
+    </div>
+    <div class="goodsDetailBottomC2" ng-if="detail.stock<=0">
+      <div class="goodsDetailBottomC3">加入购物车</div>
+    </div>
+  </div>
+</ion-footer-bar>

@@ -1,0 +1,16 @@
+<ion-content scroll="false">
+  <ion-slide-box class="startSlide" delegate-handle="slideimgsStart" show-pager="false" ng-if="showAllStart">
+    <ion-slide>
+      <img style="width:100%;height:100%;" src="img/start1.png" />
+    </ion-slide>
+    <ion-slide>
+      <img style="width:100%;height:100%;" src="img/start2.png" />
+    </ion-slide>
+    <ion-slide>
+      <img style="width:100%;height:100%;" src="img/start3.png" />
+      <div ng-if="!loginFlag" class="startB1" ng-click="jsGo('tab.home')">进入</div>
+      <div ng-if="loginFlag" class="startB1" ng-click="jsGo('login')">登录</div>
+      <div class="startB2" ng-click="jsGo('register')">注册</div>
+    </ion-slide>
+  </ion-slide-box>
+</ion-content>

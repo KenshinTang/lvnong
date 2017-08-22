@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+  android:layout_margin="5dp"
+  android:background="#ffffff">
+
+  <TextView
+    android:id="@+id/first"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center"
+    android:textColor="#3ecc1c"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
+    android:background="#ffffff"
+    android:textSize="18sp"
+    android:text="拍照" />
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="#7e7d7e"/>
+  <TextView
+    android:id="@+id/second"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:textColor="#3ecc1c"
+    android:background="#ffffff"
+    android:text="从相册选择"
+    android:textSize="18sp"
+    android:gravity="center"/>
+  <View
+    android:layout_width="match_parent"
+    android:layout_height="0.5dp"
+    android:background="#7e7d7e"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"/>
+  <TextView
+    android:id="@+id/thread"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:textColor="#3ecc1c"
+    android:background="#ffffff"
+    android:text="取消"
+    android:textSize="18sp"
+    android:gravity="center"/>
+
+</LinearLayout>

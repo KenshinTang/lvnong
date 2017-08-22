@@ -1,0 +1,40 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">个人资料</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-scroll class="has-header" style="position:absolute;width:100%;height:calc(100% - 44px);" lazy-scroll>
+  <div class="personalTopTheme">
+    <div class="personalTopThemeC1"><img ng-click="pickImg()" src=" " alt="" onerror="this.src='img/lvnongLogo3.png'" id="personalTopImg"></div>
+    <div class="personalTopThemeC2">{{mobileModify.mobile}}</div>
+  </div>
+  <div class="personalListSum">
+    <div class="personalList">
+      <div class="personalListC1">推&nbsp;荐&nbsp;码:</div>
+      <div class="personalListC2">{{userRequireArr.promoterCode}}</div>
+    </div>
+    <div class="personalList">
+      <div class="personalListC1">商家名称:</div>
+      <div class="personalListC3"><input class="personalListC4" ng-change="changeNickName(userRequireArr.nickName)" type="text" ng-model="userRequireArr.nickName" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+    </div>
+    <div class="personalList">
+      <div class="personalListC1">联系姓名:</div>
+      <div class="personalListC3"><input class="personalListC4" ng-change="changeRealName(userRequireArr.realName)" type="text" ng-model="userRequireArr.realName" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+    </div>
+    <div class="personalList">
+      <div class="personalListC1" ng-click="ceshi()">联系电话:</div>
+      <div class="personalListC2">{{mobileModify.mobile}}</div>
+    </div>
+    <div class="personalList2">
+      <div class="personalListC1">性&nbsp;&nbsp;&nbsp;&nbsp;别:</div>
+      <div class="personalListC2">
+        <div class="personalListC5"><input type="radio" name="sex" id="woman" ng-click="personalClick($event)">&nbsp;<div class="personalListC6" ng-click="personalClick($event)">女士</div>&nbsp;&nbsp;</div>
+        <div class="personalListC5"><input type="radio" name="sex" id="man" ng-click="personalClick($event)">&nbsp;<div class="personalListC6" ng-click="personalClick($event)">男士</div>&nbsp;&nbsp;</div>
+      </div>
+    </div>
+  </div>
+  <div class="personalSeparate"></div>
+  <div class="personalButton">
+    <div class="personalButtonC1" ng-click="back()">保存信息</div>
+  </div>
+</ion-scroll>

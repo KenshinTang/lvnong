@@ -1,0 +1,116 @@
+<ion-header-bar>
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">我的订单</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content scroll="false">
+  <div class="myAllOrderTopTheme">
+    <div class="myAllOrderTopThemeC1 myAllOrderTopThemeC1Active" ng-click="checkActive($event,'')">全部订单</div>
+    <div class="myAllOrderTopThemeC1" ng-click="checkActive($event,1)">待付款</div>
+    <div class="myAllOrderTopThemeC1" ng-click="checkActive($event,2)">待发货</div>
+    <div class="myAllOrderTopThemeC1" ng-click="checkActive($event,3)">待收货</div>
+    <div class="myAllOrderTopThemeC1" ng-click="checkActive($event,4)">已完成</div>
+  </div>
+
+  <div class="myAllOrderSeparate"></div>
+
+  <ion-scroll class="activityClass" lazy-scroll>
+    <div class="myAllOrderListSum" ng-repeat="item in orderListArr">
+      <div ng-if="item.status == 1">
+        <div class="myAllOrderList" ng-repeat="good in item.list" ng-click="jsGo('tab.waitPaymentDetail',item.order_id)">
+          <div class="myAllOrderListC1"><img image-lazy-src={{good.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+          <div class="myAllOrderListC2">{{good.name}}</div>
+          <div class="myAllOrderListC3">
+            <div class="myAllOrderListC4">￥{{good.price}}/{{good.spec}}</div>
+            <div class="myAllOrderListC5"></div>
+          </div>
+          <div class="myAllOrderListC6">购买数量:{{good.quantity}}</div>
+        </div>
+        <div class="myAllOrderCashSum">
+          合计:
+          <span class="myAllOrderCashSumC1">￥{{item.payable_menoy}}</span>
+          <span class="myAllOrderCashSumC2">(含物流费:￥{{item.logistics_money}},已优惠:￥{{item.coupon_money==null ? 0 : item.coupon_money}})</span>
+        </div>
+        <div class="myAllOrderWaitGoods">
+          <div class="myAllOrderWaitGoodsC2" ng-click="payNow(item.order_no,item.payable_menoy,item.order_id)">付款</div>
+          <div class="myAllOrderWaitGoodsC1" ng-click="cancel(item.order_id,$index)">取消订单</div>
+        </div>
+        <div class="myAllOrderSeparate"></div>
+      </div>
+      <div ng-if="item.status == 2">
+        <div class="myAllOrderList" ng-repeat="good in item.list" ng-click="jsGo('tab.waitDeliverGoodsDetail',item.order_id)">
+          <div class="myAllOrderListC1"><img image-lazy-src={{good.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+          <div class="myAllOrderListC2">{{good.name}}</div>
+          <div class="myAllOrderListC3">
+            <div class="myAllOrderListC4">￥{{good.price}}/{{good.spec}}</div>
+            <div class="myAllOrderListC5"></div>
+          </div>
+          <div class="myAllOrderListC6">购买数量:{{good.quantity}}</div>
+        </div>
+        <div class="myAllOrderCashSum">
+          合计:
+          <span class="myAllOrderCashSumC1">￥{{item.payable_menoy}}</span>
+          <span class="myAllOrderCashSumC2">(含物流费:￥{{item.logistics_money}},已优惠:￥{{item.coupon_money==null ? 0 : item.coupon_money}})</span>
+        </div>
+        <div class="myAllOrderWaitGoods">
+          <div class="myAllOrderWaitGoodsC2" ng-click="alertInfo(item.order_id)">提醒发货</div>
+          <div class="myAllOrderWaitGoodsC3">已付款,等待卖家发货</div>
+        </div>
+      </div>
+      <div ng-if="item.status == 3">
+        <div class="myAllOrderList" ng-repeat="good in item.list" ng-click="jsGo('tab.waitReceiveGoodsDetail',item.order_id)">
+          <div class="myAllOrderListC1"><img image-lazy-src={{good.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+          <div class="myAllOrderListC2">{{good.name}}</div>
+          <div class="myAllOrderListC3">
+            <div class="myAllOrderListC4">￥{{good.price}}/{{good.spec}}</div>
+            <div class="myAllOrderListC5"></div>
+          </div>
+          <div class="myAllOrderListC6">购买数量:{{good.quantity}}</div>
+        </div>
+        <div class="myAllOrderCashSum">
+          合计:
+          <span class="myAllOrderCashSumC1">￥{{item.payable_menoy}}</span>
+          <span class="myAllOrderCashSumC2">(含物流费:￥{{item.logistics_money}},已优惠:￥{{item.coupon_money==null ? 0 : item.coupon_money}})</span>
+        </div>
+        <div class="myAllOrderWaitGoods">
+          <div class="myAllOrderWaitGoodsC2" ng-click="confirmGoods(item.order_id,$index)">确认收货</div>
+          <div class="myAllOrderWaitGoodsC1" ng-click="jsGo('tab.logistics',item.order_id)">查看物流</div>
+        </div>
+      </div>
+      <div ng-if="item.status == 4">
+        <div class="myAllOrderList" ng-repeat="good in item.list" ng-click="jsGo('tab.completedDetail',item.order_id)">
+          <div class="myAllOrderListC1"><img image-lazy-src={{good.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+          <div class="myAllOrderListC2">{{good.name}}</div>
+          <div class="myAllOrderListC3">
+            <div class="myAllOrderListC4">￥{{good.price}}/{{good.spec}}</div>
+            <div class="myAllOrderListC5"></div>
+          </div>
+          <div class="myAllOrderListC6">购买数量:{{good.quantity}}</div>
+        </div>
+        <div class="myAllOrderCashSum">
+          合计:
+          <span class="myAllOrderCashSumC1">￥{{item.payable_menoy}}</span>
+          <span class="myAllOrderCashSumC2">(含物流费:￥{{item.logistics_money}},已优惠:￥{{item.coupon_money==null ? 0 : item.coupon_money}})</span>
+        </div>
+        <div class="myAllOrderWaitGoods">
+          <div class="myAllOrderWaitGoodsC2">交易完成</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="orderCommon1" ng-if="myAllOrderFlag==0">亲，目前还没有订单的内容哟!</div>
+    <div class="orderCommon1" ng-if="myAllOrderFlag==1">亲，目前还没有待付款的内容哟!</div>
+    <div class="orderCommon1" ng-if="myAllOrderFlag==2">亲，目前还没有待发货的内容哟!</div>
+    <div class="orderCommon1" ng-if="myAllOrderFlag==3">亲，目前还没有待收货的内容哟!</div>
+    <div class="orderCommon1" ng-if="myAllOrderFlag==4">亲，目前还没有已完成的内容哟!</div>
+
+    <div class="goodsDetailReadyBottom" ng-if="!loadMoreDataEnable && myAllOrderFlag==-1">已加载全部</div>
+    <ion-infinite-scroll id="infiniteScrollMyAllOrderId"
+                         on-infinite="loadMoreData()"
+                         distance="1%">
+    </ion-infinite-scroll>
+  </ion-scroll>
+
+
+
+</ion-content>

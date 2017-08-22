@@ -1,0 +1,66 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="connect()"><img src="img/earphone.png" alt=""></div>
+  <div class="topBarCommonC2"><img style="height: 70%;margin-top: 5px;" src="img/lvnongIndex.png" alt=""></div>
+  <div class="topBarCommonC3" ng-click="jsGo('tab.searchDetail')"><i class="icon ion-ios-search"></i></div>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <div class="home-slide" style="height:150px;" id="homeSlideTop">
+    <ion-slide-box class="homeSlideBox" style="height:100%;" does-continue="true" auto-play="true" slide-interval="2000" on-slide-changed="slideHasChanged($index)" delegate-handle="slideimgsHome">
+      <ion-slide ng-repeat="x in banner" style="height:100%;" ng-click="bannerTop(x)">
+        <img src={{x.image}} onload={$(this).fadeTo("slow",1);} style="height:100%;opacity:0;" onerror="this.src='img/lvnongLogo3.png'">
+      </ion-slide>
+      <ion-slide style="height:100%;" ng-if="banner.length==0">
+        <img src="img/lvnongLogo3.png" style="height:100%;">
+      </ion-slide>
+    </ion-slide-box>
+  </div>
+
+  <div style="height: 120px;padding-top: 10px">
+    <div style="float: left;width: 33.3%;height: 100px;text-align: center;" ng-click="jsGo('tab.presell')">
+      <img src="img/yusou.png" alt="" width="60px"/>
+      <div>预售</div>
+    </div>
+    <div style="float: left;width: 33.3%;height: 100px;text-align: center;" ng-click="jsGo('tab.lnnewGoods')">
+      <img src="img/xinpin.png" alt="" width="60px"/>
+      <div>新品</div>
+    </div>
+    <div style="float: left;width: 33.3%;height: 100px;text-align: center;" ng-click="jsGo('tab.lnHot')">
+      <img src="img/hot_pin.png" alt="" width="60px"/>
+      <div>HOT</div>
+    </div>
+  </div>
+
+  <div style="width: 95%;height: 130px;margin: auto;border: 1px solid #E7E7E7;margin-bottom: 5px;" ng-click="jsGoActive('tab.activeDetail',x.id,x.image)" ng-repeat="x in activity">
+    <img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" width="100%" height="100%" onerror="this.src='img/lvnongLogo2.png'"/>
+  </div>
+
+  <div style="height:50px;text-align: center;padding-top:10px">
+    <span>一</span>
+    <span>绿农推荐</span>
+    <span>一</span>
+  </div>
+
+  <div class="presellList">
+    <div class="presellListC1" ng-repeat="x in suggestProduct2" ng-if="x.image!=userImg" id={{"presell_"+x.id}} ng-if="x.status==0 || x.status==1">
+      <div class="presellListC4" ng-click="jsGo('tab.homeGoodsDetail', $index)">
+        <img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" width="100%" height="100%" alt="" onerror="this.src='img/lvnongLogo3.png'">
+      </div>
+      <div class="presellListC3">
+        <div>
+          <p>{{x.name}}&nbsp;<span class="storehouseRightListC4" ng-if="x.stock<=0 || x.stock<x.limitCount">缺货</span></p>
+          <p><span>￥{{x.newPrice}}</span>/{{x.spec}}</p>
+          <div class="presellAddCart" ng-click="addCart($event,$index)">加入购物车</div>
+        </div>
+        <!--<div class="presellListC8"><i class="icon ion-ios-plus-outline" ng-click="addCart($event,$index)" ng-if="x.stock>0 && x.stock>=x.limitCount"></i></div>-->
+      </div>
+      <div class="presellListC6" ng-if="x.status==0"><img class="presellListC7" src="img/presell.png" alt=""></div>
+    </div>
+    <div class="presellBlack" ng-if="suggestProduct2.length%2==1"></div>
+  </div>
+  <div class="goodsDetailReadyBottom" ng-if="!loadMoreDataEnable">已加载全部</div>
+  <ion-infinite-scroll id="infiniteScrollHomeId"
+                       on-infinite="loadMoreData()"
+                       distance="1%" ng-if="loadMoreDataEnable">
+  </ion-infinite-scroll>
+
+</ion-content>

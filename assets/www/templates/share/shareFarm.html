@@ -1,0 +1,40 @@
+<ion-view view-title="商品详情">
+  <ion-header-bar class="positive">
+    <div class="topBarCommonC1"></div>
+    <div class="topBarCommonC2">农场详情</div>
+    <div class="topBarCommonC3"></div>
+  </ion-header-bar>
+  <ion-content ng-model="farmDetailsArr" scroll="false" lazy-scroll>
+    <ion-scroll class="farmScroll" direction="y" scrollbar-y="true">
+      <ion-slide-box class="farmDetailTop" delegate-handle="slideimgs2">
+        <ion-slide ng-repeat="x in farmDetailsArr.images" ng-if="farmDetailsArr.images.length>0">
+          <img style="width:100%;height:100%;opacity:0;" src={{x}} onload={$(this).fadeTo("slow",1);} onerror="this.src='img/lvnongLogo3.png'"/>
+        </ion-slide>
+        <ion-slide style="height:100%;" ng-if="farmDetailsArr.images.length<=0">
+          <img src="img/lvnongLogo3.png" style="height:100%;">
+        </ion-slide>
+      </ion-slide-box>
+
+      <div class="farmDetailTheme">{{farmDetailsArr.name}}</div>
+      <div class="farmDetailExplain">农场地址&nbsp;&nbsp;:&nbsp;&nbsp;{{farmDetailsArr.address}}</div>
+      <div class="farmDetailExplain" ng-if="farmDetailsArr.attribute_name1 && farmDetailsArr.attribute_value1">{{farmDetailsArr.attribute_name1}}&nbsp;&nbsp;:&nbsp;&nbsp;{{farmDetailsArr.attribute_value1}}</div>
+      <div class="farmDetailExplain" ng-if="farmDetailsArr.attribute_name2 && farmDetailsArr.attribute_value2">{{farmDetailsArr.attribute_name2}}&nbsp;&nbsp;:&nbsp;&nbsp;{{farmDetailsArr.attribute_value2}}</div>
+      <div class="farmDetailExplain" ng-if="farmDetailsArr.attribute_name3 && farmDetailsArr.attribute_value3">{{farmDetailsArr.attribute_name3}}&nbsp;&nbsp;:&nbsp;&nbsp;{{farmDetailsArr.attribute_value3}}</div>
+
+      <ion-scroll class="farmDetailImg2" direction="x">
+        <div class="farmDetailImg4" ng-repeat="x in farmDetailsArr.products"><img src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+      </ion-scroll>
+
+      <div class="farmDetailSeparate"></div>
+      <div class="farmDetailDescription"></div>
+    </ion-scroll>
+  </ion-content>
+
+  <ion-footer-bar ng-click="download()" class="shareSum">
+    <div class="shareSumC1"><img class="shareSumC5" src="img/icon.png"></div>
+    <div class="shareSumC2">
+      <div class="shareSumC3">最贴心的一站式采购平台</div>
+      <div class="shareSumC4">下载绿农网了解更多</div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,64 @@
+<ion-header-bar class="positive" ng-click="storehouseclear()" id="storehouseBarId" style="opacity:0;">
+  <div class="mySearch" style="margin-left: 5%; width: 75%" ng-click="search()">
+    <i class="icon  ion-search ico_search"></i>
+    <input id="storehouseInput3" style="width:80%;background-color: #F4F4F4;" class="searchInput"  type="search" placeholder="搜索食材" readonly>
+    <!--<div id="storehouseDiv2" class="storehouseDivIcon2" ng-click="storehouseClearInput()"><i class="icon ion-ios-close-outline storehouseIcon2"></i></div>-->
+  </div>
+  <div class="searchButton" style="" ng-click="search()">搜索</div>
+</ion-header-bar>
+<ion-content class="storehouseContent" ng-model="storehouseCategoryArr" scroll="false" lazy-scroll id="storehouseContentId" style="opacity:0;">
+  <!--<div class="presellTheme">-->
+    <!--<div class="presellThemeC1 presellThemeCActive" id="presellThemeFirst" ng-click="storehouseSales($event)">-->
+      <!--<div class="presellThemeC2">销售由高到低</div>-->
+      <!--<div class="presellThemeC3"><i class="icon ion-android-arrow-dropdown presellThemeC4"></i></div>-->
+    <!--</div>-->
+    <!--<div class="presellThemeC1" id="presellThemeSecond" ng-click="storehousePrice($event)">-->
+      <!--<div class="presellThemeC2">价格由低到高</div>-->
+      <!--<div class="presellThemeC3"><i class="icon ion-android-arrow-dropdown presellThemeC4"></i></div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <ion-scroll class="storehouseLeftScroll" direction="y" scrollbar-y="true" ng-click="storehouseclear()">
+    <div class="storehouseLeftList" ng-repeat="x in storehouseCategoryArr" ng-click="storehouseLeftClick($event,$index)" id={{"storehouseLeft_"+x.id}}>
+      <div class="storehouseLeftListC1"><img src={{x.iconImage}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+      <div class="storehouseLeftListC2">{{x.name}}</div>
+    </div>
+  </ion-scroll>
+
+  <div class="storehouseRightScroll" ng-click="storehouseclear()">
+    <div class="storehouseThemeImg"><img id="storehouseGoodsImg" src="img/lvnongLogo2.png" onload={$(this).fadeTo("slow",1);} style="opacity:0;" onerror="this.src='img/lvnongLogo2.png'"></div>
+    <ion-scroll class="storehouseRightScrollC1" direction="y" scrollbar-y="true">
+      <div class="storehouseRightList" ng-repeat="x in storehouseCategoryArr[twoList].catVOList" id={{"storehouseRight_"+x.id}} ng-if="twoList>=1">
+        <div class="storehouseRightListC1" ng-click="jsGo2('tab.threeListGoods', x.id)"><img src={{x.iconImage}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+        <div class="storehouseRightListC2" ng-click="jsGo2('tab.threeListGoods', x.id)">
+          <!--<div class="storehouseRightListC7">{{x.name}}&nbsp;&nbsp;<span class="storehouseRightListC4" ng-if="x.stock<=0 || x.stock<x.limitCount">缺货</span></div>-->
+          <!--<div>￥{{x.price}}/{{x.spec}}</div>-->
+          <div>{{x.name}}</div>
+          <div>{{x.info}}</div>
+        </div>
+        <!--<div class="storehouseRightListC3"><i class="icon ion-ios-plus-outline" ng-click="storehouseAddCart($event,$index)" ng-if="x.stock>0 && x.stock>=x.limitCount"></i></div>-->
+      </div>
+
+      <div class="storehouseRightList" ng-repeat="x in storehouseListArr" id={{"storehouseRight_"+x.product_id}} ng-if="twoList==0 && (x.status==0 || x.status==1)">
+        <div class="storehouseRightListC1" ng-click="jsGo('tab.goodsDetail', x)"><img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+        <div class="storehouseRightListC2" ng-click="jsGo('tab.goodsDetail', x)" style="margin-top:0px;">
+          <div class="storehouseRightListC7">{{x.name}}&nbsp;&nbsp;<span class="storehouseRightListC4" ng-if="x.stock<=0 || x.stock<x.limitCount">缺货</span></div>
+          <div>￥{{x.price}}/{{x.spec}}</div>
+        </div>
+        <div class="storehouseRightListC3"><i class="icon ion-ios-plus-outline" ng-click="storehouseAddCart($event,$index)" ng-if="x.stock>0 && x.stock>=x.limitCount"></i></div>
+      </div>
+    </ion-scroll>
+  </div>
+
+  <div class="presellAllCategory1" style="height:auto;">
+    <div class="presellAllCategoryC1" ng-repeat="x in categoryArr1" ng-click="presellListC1(x)">
+      <div class="presellAllCategoryC2">{{x[0]}}</div>
+    </div>
+  </div>
+
+  <div class="presellAllCategory2" style="height:auto;">
+    <div class="presellAllCategoryC1" ng-repeat="x in categoryArr2" ng-click="presellListC2(x)">
+      <div class="presellAllCategoryC2">{{x[0]}}</div>
+    </div>
+  </div>
+</ion-content>

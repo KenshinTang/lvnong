@@ -1,0 +1,46 @@
+<ion-view view-title="预约参观报名" ng-controller="farmBespeakCtrl">
+  <ion-header-bar class="positive">
+    <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+    <div class="topBarCommonC2">预约参观报名</div>
+    <div class="topBarCommonC3"></div>
+  </ion-header-bar>
+  <div class="has-header" style="position:absolute;width:100%;height:100%;overflow:scroll;">
+    <div class="farmBespeakListC1">为了确保您的预约有效,请输入真实参观信息</div>
+    <div class="farmBespeakListC2">
+      <div class="farmBespeakListC3">参观人姓名:</div>
+      <div class="farmBespeakListC4"><input class="farmBespeakListC5" type="text" placeholder="输入姓名" ng-change="changeVisit_namel(visit_namel)" ng-model="visit_namel" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+    </div>
+    <div class="farmBespeakListC2">
+      <div class="farmBespeakListC3">参观人数:</div>
+      <div class="farmBespeakListC4"><input class="farmBespeakListC5" type="number" placeholder="输入参观人数" ng-change="changeVisit_count(visit_count)" ng-model="visit_count" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+    </div>
+    <div class="farmBespeakListC2">
+      <div class="farmBespeakListC3">参观人电话:</div>
+      <div class="farmBespeakListC4"><input class="farmBespeakListC5" type="number" placeholder="输入电话" ng-change="changeMobile(mobile)" ng-model="mobile" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+    </div>
+    <div class="farmBespeakListC2">
+      <div class="farmBespeakListC3">输入验证码:</div>
+      <div class="farmBespeakListC6">
+        <input class="farmBespeakListC5" type="number" placeholder="输入验证码" ng-change="changeCode(code)" ng-model="code" ng-focus="Focus1()" ng-blur="Blur1()">
+      </div>
+      <div class="farmBespeakListC7" ng-click="requireCode()">获取验证码</div>
+    </div>
+    <div class="farmBespeakListC2">
+      <div class="farmBespeakListC3">预约日期:</div>
+      <div class="farmBespeakListC8">
+        <!--<div style="width: 100%; height: 20px" ng-click="selectedDate($event)">{{visit_time}}</div>-->
+        <input type="text" style="width: 100%;" ng-click="selectedDate($event)" placeholder="选择日期" readonly />
+      </div>
+    </div>
+    <div class="farmBespeakListC2">
+      <div class="farmBespeakListC3">前往方式:</div>
+      <div class="farmBespeakListC9">
+        <div class="farmBespeakListC10"><input type="radio" name="choiceWay" ng-click="personalClick($event,1)">&nbsp;<div class="farmBespeakListC11" ng-click="personalClick($event,1)">自驾前往</div>&nbsp;&nbsp;</div>
+        <div class="farmBespeakListC10"><input type="radio" name="choiceWay" ng-click="personalClick($event,2)">&nbsp;<div class="farmBespeakListC11" ng-click="personalClick($event,2)">安排乘车</div>&nbsp;&nbsp;</div>
+      </div>
+    </div>
+    <div class="farmDetailBespeak">
+      <div class="farmDetailBespeakButton" ng-click="submit()">提交报名</div>
+    </div>
+  </div>
+</ion-view>

@@ -1,0 +1,51 @@
+
+/*个人中心*/
+.login{
+  height:180px;
+  background-color:#5E5E5E;
+  position: relative;
+}
+.information{
+  float: left;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.set{
+  float: right;
+  margin-top:6px;
+  margin-right:10px;
+}
+.banner_ava1{
+  text-align: center;
+  position: absolute;
+  top:40px;
+  left:3%;
+}
+.ava_title{
+  font-size: 20px;
+  color:#EAEAE8;
+}
+.ava_text{
+  position: relative;
+  top:6px;
+}
+.title_bar>a{
+  float: left;
+  width: 25%;
+  margin-top: 25px;
+}
+.text_t1{
+  float: right;
+  color:#B9B9B9;
+
+}
+
+.ion-chevron-right{
+  float: right;
+  margin-top: 8px;
+}
+.item-avatar>span{
+  position: relative;
+  top: 8px;
+}
+

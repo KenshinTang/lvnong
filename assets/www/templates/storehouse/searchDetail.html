@@ -1,0 +1,40 @@
+<ion-header-bar class="positive" id="searchDetailBarId" style="opacity:0;">
+  <div class="topBarCommonC1" style="float: left; position: relative" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="mySearch">
+    <i class="icon  ion-search ico_search"></i>
+    <input id="storehouseInput4" style="width:70%;" class="searchInput"  type="search" placeholder="搜索食材" ng-model="keyword" ng-change="changeKeyword(keyword)" ng-focus="Focus1()" ng-blur="Blur1()">
+    <div id="storehouseDiv3" class="storehouseDivIcon2" ng-click="storehouseClearInput()"><i class="icon ion-ios-close-outline storehouseIcon2"></i></div>
+  </div>
+  <div class="searchButton" style="" ng-click="search()">搜索</div>
+</ion-header-bar>
+<ion-content lazy-scroll id="searchDetailContentId" style="opacity:0;">
+  <!--<div ng-if="!searchResult" style="width: 100%; margin-top: 50px; font-size: 18px; text-align: center; line-height: 50px">-->
+    <!--暂无搜索结果-->
+  <!--</div>-->
+  <div class="searchDetailC1" ng-if="!searchResult">
+    <div class="searchDetailC2">
+      <div class="searchDetailC3"><i class="icon ion-ios-clock-outline"></i></div>
+      <div class="searchDetailC4">历史记录</div>
+    </div>
+    <div class="searchDetailC5 " ng-repeat="x in searchhy" ng-click="search2(x.searchH)">{{x.searchH}}</div>
+  </div>
+  <div class="searchDetailC6" ng-if="!searchResult && searchFlagHY" ng-click="clearH()">清除搜索历史</div>
+  <div ng-if="searchResult" class="presellList">
+    <div class="presellListC1" ng-repeat="item in list" id={{"presell_"+x.id}} ng-if="(item.status==0 || item.status==1) && item.image!=userImg">
+      <div class="presellListC4" ng-click="goDetail('tab.goodsDetail',item)">
+        <img image-lazy-src={{item.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" width="100%" height="100%" alt="" onerror="this.src='img/lvnongLogo3.png'">
+      </div>
+      <div class="presellListC3">
+        <div>
+          <p>{{item.name}}<span class="storehouseRightListC4" ng-if="item.stock<=0 || item.stock<item.limitCount">缺货</span></p>
+          <p><span>￥{{item.newPrice}}</span>/{{item.spec}}</p>
+          <div class="presellAddCart" ng-click="addCart($event,$index)">加入购物车</div>
+        </div>
+        <!--<div class="presellListC8"><i class="icon ion-ios-plus-outline" ng-click="addToCart($event,$index)" ng-if="item.stock>0 && item.stock>=item.limitCount"></i></div>-->
+      </div>
+      <div class="presellListC6" ng-if="item.is_activity==1"><img class="presellListC7" src="img/action.png" alt=""></div>
+    </div>
+    <div class="presellBlack" ng-if="list.length%2==1"></div>
+    <div class="left goodsDetailReadyBottom" style="position:relative;float:left;">已加载全部</div>
+  </div>
+</ion-content>

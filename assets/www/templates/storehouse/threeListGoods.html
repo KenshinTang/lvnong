@@ -1,0 +1,31 @@
+<ion-header-bar class="positive" id="resetRedNumberTopId1">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">{{name}}</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <div class="presellList">
+    <div class="presellListC1" ng-repeat="x in storehouseListArr" id={{"activeDetail_"+x.id}} ng-if="(x.status==0 || x.status==1) && x.image!=userImg">
+      <div class="presellListC4" ng-click="jsGo('tab.goodsDetail', x)">
+        <img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" width="100%" height="100%" alt="" onerror="this.src='img/lvnongLogo3.png'">
+      </div>
+      <div class="presellListC3">
+        <div>
+          <p>{{x.name}}&nbsp;<span class="storehouseRightListC4" ng-if="x.stock<=0 || x.stock<x.limitCount">缺货</span></p>
+          <p><span>￥{{x.newPrice}}</span>/{{x.spec}}</p>
+          <div class="presellAddCart" ng-click="addCart($event,$index)">加入购物车</div>
+        </div>
+        <!--<div class="presellListC8"><i class="icon ion-ios-plus-outline" ng-click="addCart($event,$index)" ng-if="x.stock>0 && x.stock>=x.limitCount"></i></div>-->
+      </div>
+      <div class="presellListC6" ng-if="x.is_activity==1"><img class="presellListC7" src="img/action.png" alt=""></div>
+    </div>
+    <div class="presellBlack" ng-if="storehouseListArr.length%2==1"></div>
+  </div>
+  <div class="goodsDetailReadyBottom" ng-if="!loadMoreDataEnable">已加载全部</div>
+  <ion-infinite-scroll id="infiniteScrollThreeLGId"
+    on-infinite="loadMoreData()"
+    distance="1%" ng-if="loadMoreDataEnable">
+  </ion-infinite-scroll>
+
+</ion-content>
+

@@ -1,0 +1,35 @@
+# Non-project-specific build files:
+build.xml
+local.properties
+/gradlew
+/gradlew.bat
+/gradle
+# Ant builds
+ant-build
+ant-gen
+# Eclipse builds
+gen
+out
+# Gradle builds
+/build
+.gradle/
+.idea/
+#CordovalLib
+CordovaLib/build
+CordovaLib/CordovaLib.iml
+*.iml
+#citylib
+citylib/build
+citylib/citylib.iml
+#mainlibs
+mainlibls/build
+mainlibls/mainlibs.iml
+#onekeyshare
+onekeyshare/build
+onekeyshare/onekeyshare.iml
+#pickview
+pickview/build
+pickview/pickview.iml
+#PushSDK
+PushSDK/build
+PushSDK/PushSDK.iml

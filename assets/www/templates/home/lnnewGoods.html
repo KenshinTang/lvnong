@@ -1,0 +1,68 @@
+<ion-header-bar class="positive" id="resetRedNumberTopId2">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2" ng-click="clearWindows()">绿农新品</div>
+  <div class="topBarCommonC3" ng-click="jsGo('tab.cart')"><i class="icon ion-ios-cart-outline"></i></div>
+</ion-header-bar>
+<ion-content scroll="false">
+  <div class="presellTheme">
+    <div class="presellThemeC1 presellThemeCActive" id="presellThemeFirst" ng-click="presellList($event)">
+      <div class="presellThemeC2">全部分类</div>
+      <div class="presellThemeC3"><i class="icon ion-android-arrow-dropdown presellThemeC4"></i></div>
+    </div>
+    <div class="presellThemeC1" id="presellThemeSecond" ng-click="presellPriceTime($event)">
+      <div class="presellThemeC2">价格由低到高</div>
+      <div class="presellThemeC3"><i class="icon ion-android-arrow-dropdown presellThemeC4"></i></div>
+    </div>
+  </div>
+
+  <ion-scroll class="activityClass" ng-click="clearWindows()" lazy-scroll>
+    <div class="presellList">
+      <div class="presellListC1" ng-repeat="x in presellDataArr" id={{"presell_"+x.id}} ng-if="(x.status==0 || x.status==1) && x.image!=userImg">
+        <div class="presellListC4 " ng-click="jsGo('tab.homeGoodsDetail', x)">
+          <img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" width="100%" height="100%" alt="" onerror="this.src='img/lvnongLogo3.png'">
+        </div>
+        <div class="presellListC3">
+          <div>
+            <p>{{x.name}}&nbsp;<span class="storehouseRightListC4" ng-if="x.stock<=0 || x.stock<x.limitCount">缺货</span></p>
+            <p><span>￥{{x.newPrice}}</span>/{{x.spec}}</p>
+            <div class="presellAddCart" ng-click="addCart($event,$index)">加入购物车</div>
+          </div>
+          <!--<div class="presellListC8"><i class="icon ion-ios-plus-outline" ng-click="addCart($event,$index)" ng-if="x.stock>0 && x.stock>=x.limitCount"></i></div>-->
+        </div>
+        <div class="presellListC6" ng-if="x.status==1"><img class="presellListC7" src="img/xin.png" alt=""></div>
+        <div class="presellListC6" ng-if="x.status==0"><img class="presellListC7" src="img/presell.png" alt=""></div>
+      </div>
+      <div class="presellBlack" ng-if="presellDataArr.length%2==1"></div>
+    </div>
+
+    <div class="goodsDetailReadyBottom" ng-if="!loadMoreDataEnable">已加载全部</div>
+    <ion-infinite-scroll id="infiniteScrollInnewId"
+                         on-infinite="loadMoreData()"
+                         distance="1%">
+    </ion-infinite-scroll>
+  </ion-scroll>
+
+  <ion-scroll class="presellAllCategory1" ng-if="presellFlag">
+    <div class="presellAllCategoryC1" ng-repeat="x in categoryArr1" ng-click="presellListC1(x)" style={{x[0]==categoryArr1Flag?"background:rgb(249,249,249);color:#59A93B;":"background:white;color:black;"}}>
+      <div class="presellAllCategoryC2">{{x[0]}}</div>
+    </div>
+  </ion-scroll>
+
+  <ion-scroll class="presellAllCategory2" style="height: 74px;" ng-if="presellFlag">
+    <div class="presellAllCategoryC1" ng-repeat="x in categoryArr2" ng-click="presellListC2(x)" style={{x[0]==categoryArr2Flag?"background:rgb(249,249,249);color:#59A93B;":"background:white;color:black;"}}>
+      <div class="presellAllCategoryC2">{{x[0]}}</div>
+    </div>
+  </ion-scroll>
+
+  <div class="presellAllCategory1" ng-if="!presellFlag">
+    <div class="presellAllCategoryC1" ng-repeat="x in categoryArr1" ng-click="presellListC1(x)" style='{{x[0]==categoryArr1Flag?"background:rgb(249,249,249);color:#59A93B;":"background:white;color:black;"}}'>
+      <div class="presellAllCategoryC2">{{x[0]}}</div>
+    </div>
+  </div>
+
+  <div class="presellAllCategory2" style="height: 74px;" ng-if="!presellFlag">
+    <div class="presellAllCategoryC1" ng-repeat="x in categoryArr2" ng-click="presellListC2(x)" style='{{x[0]==categoryArr2Flag?"background:rgb(249,249,249);color:#59A93B;":"background:white;color:black;"}}'>
+      <div class="presellAllCategoryC2">{{x[0]}}</div>
+    </div>
+  </div>
+</ion-content>

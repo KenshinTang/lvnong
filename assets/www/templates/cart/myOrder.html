@@ -1,0 +1,83 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">填写订单</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content scroll="false">
+  <ion-scroll class="myorderScroll" direction="y">
+    <div class="myorderContact" ng-click="jsGo('tab.myAddress')">
+      <div class="myorderContactC1" ng-if="defaultAddress">
+        <div class="myorderContactC3">
+          <div>联&nbsp;系&nbsp;人:</div>
+          <div><span>{{defaultAddress.name}}&nbsp;&nbsp;{{defaultAddress.mobile}}</span></div>
+        </div>
+        <div class="myorderContactC3">
+          <div>收货地址:</div>
+          <div><span>{{defaultAddress.address}}&nbsp;&nbsp;{{defaultAddress.street}}</span></div>
+        </div>
+      </div>
+      <div class="myorderContactC1" ng-if="!defaultAddress">
+        <span style="height:50px; width: 75%; float: left; line-height: 50px">请填写地址信息</span>
+      </div>
+      <div class="myorderContactC2">
+        <i class="icon ion-ios-arrow-right"></i>
+      </div>
+    </div>
+    <div class="myorderSeparate"></div>
+    <div class="myorderGoods">
+      <div class="myorderGoodsC1">购买商品</div>
+      <div class="myorderGoodsC2" ng-repeat="item in productList">
+        <div class="myorderGoodsC3">{{item.name}}</div>
+        <div class="myorderGoodsC4">x{{item.quantity}}</div>
+        <div class="myorderGoodsC5">￥{{priceList[$index]}}</div>
+      </div>
+    </div>
+    <div class="myorderSeparate"></div>
+    <div class="myorderPay">
+      <div class="myorderPayC1" ng-click="jsGo('tab.payWay')">
+        <div class="myorderPayC2">支付方式:</div>
+        <div class="myorderPayC3">{{payType == 0 ? '支付宝支付' : '微信支付'}}</div>
+        <div class="myorderPayC4"><i class="icon ion-ios-arrow-right"></i></div>
+      </div>
+      <div class="myorderPayC1" ng-click="jsGo('tab.myCoupon')">
+        <div class="myorderPayC2">优&nbsp;&nbsp;惠&nbsp;&nbsp;券:</div>
+        <div class="myorderPayC3">{{defaultCoupon ? ( coupon ? coupon.lessMoney : '请选择优惠券') : '暂无可用优惠券'}}</div>
+        <div class="myorderPayC4"><i class="icon ion-ios-arrow-right"></i></div>
+      </div>
+      <div class="myorderPayRemark">
+        <div class="myorderPayRemarkC1">备&nbsp;&nbsp;&nbsp;&nbsp;注:</div>
+        <div class="myorderPayRemarkC2"><textarea ng-model="remark" ng-change="changeRemark(remark)" placeholder="请输入订单备注信息" name="" id="" cols="30" rows="10"></textarea></div>
+      </div>
+    </div>
+    <div class="myorderSeparate"></div>
+    <div class="myorderCash">
+      <div class="myorderCashC1">
+        <div class="myorderCashC2">商品总额:</div>
+        <div class="myorderCashC3">￥{{allPrice}}</div>
+      </div>
+      <div class="myorderCashC1">
+        <div class="myorderCashC2">-优惠券:</div>
+        <div class="myorderCashC3">￥{{coupon ? coupon.lessMoney : 0}}</div>
+      </div>
+      <div class="myorderCashC1">
+        <div class="myorderCashC2">运费:</div>
+        <div class="myorderCashC4">￥{{wuliuPrice}}</div>
+      </div>
+    </div>
+  </ion-scroll>
+  <div class="myorderSeparate2"></div>
+  <div class="myorderSum">
+    <div class="myorderSumC1">总计</div>
+    <div class="myorderSumC2">￥{{finallyPrice > 0 ? finallyPrice : 0}}</div>
+    <div class="myorderSumC3" ng-click="submitNow()">
+      <div class="myorderSumC4" ng-if="finallyPrice>0">确认付款</div>
+    </div>
+    <div class="myorderSumC3">
+      <div class="myorderSumC5" ng-if="finallyPrice<=0">确认付款</div>
+    </div>
+  </div>
+</ion-content>
+
+
+
+

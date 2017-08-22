@@ -1,0 +1,28 @@
+<ion-view style="background:#E9E9E9;">
+  <ion-content class="loginContentRegister">
+    <!--<div class="loginContent">-->
+      <div class="loginTheme">
+        <div class="loginThemeClose" ng-click="jsGo('loginRegister')"><i class="icon ion-ios-close-empty"></i></div>
+        <div class="loginThemeSum">
+          <div class="loginThemeLogin">登录</div>
+          <div class="loginThemeList">
+            <div class="loginThemeListC1"><img src="img/phone.png" alt=""></div>
+            <div class="loginThemeListC2"><input type="text" placeholder="请输入手机号" ng-change="changePhone(phone)" ng-model="phone" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+          </div>
+          <div class="loginThemeList2">
+            <div class="loginThemeListC1"><img src="img/lock.png" alt=""></div>
+            <div class="loginThemeListC2"><input type="password" placeholder="请输入密码" ng-change="changePassword(password)" ng-model="password" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+          </div>
+          <div class="loginThemeList3">
+            <div class="loginThemeList3C1" ng-click="jsGo('forget')">忘记密码?</div>
+            <div class="loginThemeList3C2" ng-click="jsGo('register')">注册</div>
+          </div>
+          <div class="loginThemeLoginButton" ng-click="login()">登录</div>
+          <div class="loginWeichat" ng-if="PlatformFlag2" ng-click="weichat()"><img style="width:100%;height:100%;border-radius: 50%;" src="img/weichat.png" alt=""></div>
+        </div>
+      </div>
+    <!--</div>-->
+  </ion-content>
+</ion-view>
+
+

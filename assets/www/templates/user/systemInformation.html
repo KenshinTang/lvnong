@@ -1,0 +1,20 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">系统通知</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content>
+  <div ng-repeat="x in systemInformationArr">
+    <div class="systemInformationList">
+      <div>
+        <img class="systemInformationImg" src="img/xitong_xx.png" alt="">
+        <div style="width:100%;height:20px;"></div>
+      </div>
+      <div class="systemInformationDetail">
+        <p>{{x.title}}</p>
+        <p>{{x.content}}</p>
+      </div>
+    </div>
+    <div class="systemInformationSeparate"></div>
+  </div>
+</ion-content>

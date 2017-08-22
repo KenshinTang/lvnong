@@ -1,0 +1,32 @@
+<ion-header-bar class="positive" id="resetRedNumberTopId4">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">活动详情</div>
+  <div class="topBarCommonC3" ng-click="jsGo('tab.cart')"><i class="icon ion-ios-cart-outline"></i></div>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <div class="activeDetailTheme">
+    <img src={{active_img}} alt="" ng-click="jsGo(-100)" onerror="this.src='img/lvnongLogo2.png'">
+    <div>——&nbsp;活动商品&nbsp;——</div>
+  </div>
+
+  <div class="presellList">
+    <div class="presellListC1" ng-repeat="x in productActivityProductArr" id={{"activeDetail_"+x.id}} ng-if="(x.status==0 || x.status==1) && x.image!=userImg">
+      <div class="presellListC4" ng-click="jsGo('tab.homeGoodsDetail', x)">
+        <img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" width="100%" height="100%" alt="" onerror="this.src='img/lvnongLogo3.png'">
+      </div>
+      <div class="presellListC3">
+        <div>
+          <p>{{x.name}}&nbsp;<span class="storehouseRightListC4" ng-if="x.stock<=0 || x.stock<x.limitCount">缺货</span></p>
+          <p><span>￥{{x.newPrice}}</span>/{{x.spec}}</p>
+          <div class="presellAddCart" ng-click="addCart($event,$index)">加入购物车</div>
+        </div>
+        <!--<div class="presellListC8"><i class="icon ion-ios-plus-outline" ng-click="addCart($event,$index)" ng-if="x.stock>0 && x.stock>=x.limitCount"></i></div>-->
+      </div>
+      <div class="presellListC6"><img class="presellListC7" src="img/action.png" alt=""></div>
+    </div>
+    <div class="presellBlack" ng-if="productActivityProductArr.length%2==1"></div>
+  </div>
+  <div class="goodsDetailReadyBottom">已加载全部</div>
+
+</ion-content>
+

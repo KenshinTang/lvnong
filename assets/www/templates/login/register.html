@@ -1,0 +1,36 @@
+<ion-view style="background:#E9E9E9;">
+  <ion-content class="loginContentRegister">
+    <!--<div class="loginContent">-->
+      <div class="registerTheme">
+        <div class="loginThemeClose" ng-click="back()"><i class="icon ion-ios-close-empty"></i></div>
+        <div class="loginThemeSum">
+          <div class="loginThemeLogin">注册</div>
+          <div class="registerThemeList" id="registerPhoneCheckSum">
+            <div class="registerThemeListC1"><img src="img/phone.png" alt=""></div>
+            <div class="registerThemeListC4"><input type="text" placeholder="请输入手机号" ng-change="changePhone(phone)" ng-model="phone" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+            <!--<div class="registerThemeListC5" id="registerPhoneCheck">请输入正确的号码</div>-->
+          </div>
+          <div class="registerThemeList2">
+            <div class="registerThemeListC1"><img src="img/phone.png" alt=""></div>
+            <div class="registerThemeListC3"><input type="number" placeholder="请输入验证码" ng-change="changeCode(code)" ng-model="code" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+          </div>
+          <div class="registerThemeList3" ng-click="getSmsCode()">获取验证码</div>
+          <div class="registerThemeList4">
+            <div class="registerThemeListC1"><img src="img/lock.png" alt=""></div>
+            <div class="registerThemeListC2"><input type="text" placeholder="请输入密码" ng-change="changePassword(password)" ng-model="password" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+          </div>
+          <div class="registerThemeLoginButton" ng-click="registerUser()">注册</div>
+          <div class="registerAgreement">
+            <div class="registerAgreementC4">
+              <div class="registerAgreementC1" ng-click="resigterAgree()" ng-if="!registerAgreeFlag"></div>
+              <div class="registerAgreementC1" ng-click="resigterAgree()" ng-if="registerAgreeFlag" style="background:#6FB956;"></div>
+              <div class="registerAgreementC2" ng-click="resigterAgree()">同意用户协议</div>
+            </div>
+            <div class="registerAgreementC3" ng-click="resigterScan()">查看用户协议</div>
+          </div>
+        </div>
+      </div>
+    <!--</div>-->
+  </ion-content>
+</ion-view>
+

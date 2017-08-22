@@ -1,0 +1,174 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">购物车</div>
+  <div class="topBarCommonC3"><div class="editorCommon" ng-click="editor($event)">编辑</div></div>
+</ion-header-bar>
+<ion-scroll class="has-header cartContent" style="width:100%;" lazy-scroll>
+  <div class="cartCurrent" ng-if="commonList.length > 0">
+    <div class="cartCurrentC1"><img src="img/xhg.png" alt=""></div>
+    <div class="cartCurrentC2">现货</div>
+  </div>
+
+  <div class="cartShop" ng-if="customArea1.length > 0">服务站(成都)</div>
+  <div class="cartCurrentList" ng-repeat="x in customArea1" id={{"commonList_"+x.id}}>
+    <div class="cartCurrentListC1">
+      <div class="cartCurrentListC8"  ng-if="commomSelectedArea1[$index]" ng-click="selected($index, false, false,1)" id={{"commonListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: inline" alt="" class="cart_checkAll">
+      </div>
+      <div class="cartCurrentListC8"  ng-if="!commomSelectedArea1[$index]" ng-click="selected($index, true, false,1)" id={{"commonListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: none" alt="" class="cart_checkAll">
+      </div>
+    </div>
+    <div class="cartCurrentListC2"><img src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" ng-click="jsGoGoods('tab.goodsDetail', x)" onerror="this.src='img/lvnongLogo3.png'"></div>
+    <div class="cartCurrentListC3">
+      <div class="cartCurrentListC4">{{x.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+        <!--<i class="icon ion-ios-help-outline iconCommon3" ng-click="cartAlert(false,$index,$event)"></i>-->
+      </div>
+      <div class="cartCurrentListC5">规格:&nbsp;&nbsp;&nbsp;&nbsp;{{x.spec}}</div>
+      <div class="cartCurrentListC5">价格:&nbsp;&nbsp;&nbsp;&nbsp;￥{{commomPriceListArea1[$index]}}</div>
+      <div class="cartCurrentListC5">起批量:&nbsp;&nbsp;{{commonLimitCountArea1[$index]}}</div>
+      <div class="cartCurrentListC5">库存量:&nbsp;&nbsp;{{x.stock}}</div>
+      <div class="cartCurrentListC7"></div>
+    </div>
+    <div class="cartCurrentListC6">
+      <i class="icon ion-ios-minus-outline" ng-click="minus($event, false, $index,1)"></i>
+      <input type="text" class="cartInput cartInput2" id={{"cartInput_"+x.productId}} ng-change="cartInputChange('cartInput_'+x.productId,false,$index,1)" ng-focus="cartInputFocus()" ng-blur="cartInputBlur('cartInput_'+x.productId,false,$index,1)" ng-model="commonCartInitNumArea1[$index]">
+      <i class="icon ion-ios-plus-outline" ng-click="plus($event, false, $index,1)"></i>
+    </div>
+    <div class="cartCurrentListC9" id={{"cartAlertCommon_"+x.productId}}>购买量必须大于{{commonLimitCountArea1[$index]}}</div>
+  </div>
+  <div class="cartSum" ng-if="customArea1.length > 0">
+    <div class="cartSumC1">总金额:</div>
+    <div class="cartSumC2">￥{{commonAllPriceArea1}}</div>
+    <div class="cartSumC3" ng-click="goBuy(false,1)">
+      <div>去付款</div>
+    </div>
+  </div>
+
+  <div class="cartShop" ng-if="customArea2.length > 0">服务站(巴中)</div>
+  <div class="cartCurrentList" ng-repeat="x in customArea2" id={{"commonList_"+x.id}}>
+    <div class="cartCurrentListC1">
+      <div class="cartCurrentListC8"  ng-if="commomSelectedArea2[$index]" ng-click="selected($index, false, false,2)" id={{"commonListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: inline" alt="" class="cart_checkAll">
+      </div>
+      <div class="cartCurrentListC8"  ng-if="!commomSelectedArea2[$index]" ng-click="selected($index, true, false,2)" id={{"commonListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: none" alt="" class="cart_checkAll">
+      </div>
+    </div>
+    <div class="cartCurrentListC2"><img src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" ng-click="jsGoGoods('tab.goodsDetail', x)" onerror="this.src='img/lvnongLogo3.png'"></div>
+    <div class="cartCurrentListC3">
+      <div class="cartCurrentListC4">{{x.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+        <!--<i class="icon ion-ios-help-outline iconCommon3" ng-click="cartAlert(false,$index,$event)"></i>-->
+      </div>
+      <div class="cartCurrentListC5">规格:&nbsp;&nbsp;&nbsp;&nbsp;{{x.spec}}</div>
+      <div class="cartCurrentListC5">价格:&nbsp;&nbsp;&nbsp;&nbsp;￥{{commomPriceListArea2[$index]}}</div>
+      <div class="cartCurrentListC5">起批量:&nbsp;&nbsp;{{commonLimitCountArea2[$index]}}</div>
+      <div class="cartCurrentListC5">库存量:&nbsp;&nbsp;{{x.stock}}</div>
+      <div class="cartCurrentListC7"></div>
+    </div>
+    <div class="cartCurrentListC6">
+      <i class="icon ion-ios-minus-outline" ng-click="minus($event, false, $index,2)"></i>
+      <input type="text" class="cartInput cartInput3" id={{"cartInput_"+x.productId}} ng-change="cartInputChange('cartInput_'+x.productId,false,$index,2)" ng-focus="cartInputFocus()" ng-blur="cartInputBlur('cartInput_'+x.productId,false,$index,2)" ng-model="commonCartInitNumArea2[$index]">
+      <i class="icon ion-ios-plus-outline" ng-click="plus($event, false, $index,2)"></i>
+    </div>
+    <div class="cartCurrentListC9" id={{"cartAlertCommon_"+x.productId}}>购买量必须大于{{commonLimitCountArea2[$index]}}</div>
+  </div>
+  <div class="cartSum" ng-if="customArea2.length > 0">
+    <div class="cartSumC1">总金额:</div>
+    <div class="cartSumC2">￥{{commonAllPriceArea2}}</div>
+    <div class="cartSumC3" ng-click="goBuy(false,2)">
+      <div>去付款</div>
+    </div>
+  </div>
+
+  <div class="cartSeparate" ng-if="commonList.length > 0 && preSellList.length > 0"></div>
+
+  <div class="cartCurrent" ng-if="preSellList.length > 0">
+    <div class="cartCurrentC1"><img src="img/yus_img.png" alt=""></div>
+    <div class="cartCurrentC2">预售</div>
+  </div>
+
+  <div class="cartShop" ng-if="preSellArea1.length > 0">服务站(成都)</div>
+  <div class="cartCurrentList" ng-repeat="x in preSellArea1" id={{"preSellList_"+x.id}}>
+    <div class="cartCurrentListC1">
+      <div class="cartCurrentListC8" ng-if="preSellSelectedArea1[$index]" ng-click="selected($index, false, true,1)" id={{"presellListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: inline" alt="" class="cart_checkAll">
+      </div>
+      <div class="cartCurrentListC8" ng-if="!preSellSelectedArea1[$index]" ng-click="selected($index, true, true,1)" id={{"presellListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: none" alt="" class="cart_checkAll">
+      </div>
+    </div>
+    <div class="cartCurrentListC2"><img src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" ng-click="jsGoGoods('tab.goodsDetail', x)" onerror="this.src='img/lvnongLogo3.png'"></div>
+    <div class="cartCurrentListC3">
+      <div class="cartCurrentListC4">{{x.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+        <!--<i class="icon ion-ios-help-outline iconCommon3" ng-click="cartAlert(true,$index,$event)"></i>-->
+      </div>
+      <div class="cartCurrentListC5">规格:&nbsp;&nbsp;&nbsp;&nbsp;{{x.spec}}</div>
+      <div class="cartCurrentListC5">价格:&nbsp;&nbsp;&nbsp;&nbsp;￥{{preSellPriceListArea1[$index]}}</div>
+      <div class="cartCurrentListC5">起批量:&nbsp;&nbsp;&nbsp;&nbsp;{{presellLimitCountArea1[$index]}}</div>
+      <div class="cartCurrentListC5">库存量:&nbsp;&nbsp;{{x.stock}}</div>
+      <div class="cartCurrentListC7"></div>
+    </div>
+    <div class="cartCurrentListC6">
+      <i class="icon ion-ios-minus-outline" ng-click="minus($event, true, $index,1)"></i>
+      <input type="text" class="cartInput cartInput4" id={{"cartInput_"+x.productId}} ng-change="cartInputChange('cartInput_'+x.productId,true,$index,1)" ng-focus="cartInputFocus()" ng-blur="cartInputBlur('cartInput_'+x.productId,true,$index,1)" ng-model="preSellCartInitNumArea1[$index]">
+      <i class="icon ion-ios-plus-outline" ng-click="plus($event, true, $index,1)"></i>
+    </div>
+    <div class="cartCurrentListC9" id={{"cartAlertPresell_"+x.productId}}>购买量必须大于{{presellLimitCountArea1[$index]}}</div>
+  </div>
+  <div class="cartSum" ng-if="preSellArea1.length > 0">
+    <div class="cartSumC1">总金额:</div>
+    <div class="cartSumC2">￥{{preSellAllPriceArea1}}</div>
+    <div class="cartSumC3" ng-click="goBuy(true,1)">
+      <div>去付款</div>
+    </div>
+  </div>
+
+  <div class="cartShop" ng-if="preSellArea2.length > 0">服务站(巴中)</div>
+  <div class="cartCurrentList" ng-repeat="x in preSellArea2" id={{"preSellList_"+x.id}}>
+    <div class="cartCurrentListC1">
+      <div class="cartCurrentListC8" ng-if="preSellSelectedArea2[$index]" ng-click="selected($index, false, true,2)" id={{"presellListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: inline" alt="" class="cart_checkAll">
+      </div>
+      <div class="cartCurrentListC8" ng-if="!preSellSelectedArea2[$index]" ng-click="selected($index, true, true,2)" id={{"presellListIMG_"+x.productId}}>
+        <img src="img/check.png" style="display: none" alt="" class="cart_checkAll">
+      </div>
+    </div>
+    <div class="cartCurrentListC2"><img src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" ng-click="jsGoGoods('tab.goodsDetail', x)" onerror="this.src='img/lvnongLogo3.png'"></div>
+    <div class="cartCurrentListC3">
+      <div class="cartCurrentListC4">{{x.name}}&nbsp;&nbsp;&nbsp;&nbsp;
+        <!--<i class="icon ion-ios-help-outline iconCommon3" ng-click="cartAlert(true,$index,$event)"></i>-->
+      </div>
+      <div class="cartCurrentListC5">规格:&nbsp;&nbsp;&nbsp;&nbsp;{{x.spec}}</div>
+      <div class="cartCurrentListC5">价格:&nbsp;&nbsp;&nbsp;&nbsp;￥{{preSellPriceListArea2[$index]}}</div>
+      <div class="cartCurrentListC5">起批量:&nbsp;&nbsp;&nbsp;&nbsp;{{presellLimitCountArea2[$index]}}</div>
+      <div class="cartCurrentListC5">库存量:&nbsp;&nbsp;{{x.stock}}</div>
+      <div class="cartCurrentListC7"></div>
+    </div>
+    <div class="cartCurrentListC6">
+      <i class="icon ion-ios-minus-outline" ng-click="minus($event, true, $index,2)"></i>
+      <input type="text" class="cartInput cartInput5" id={{"cartInput_"+x.productId}} ng-change="cartInputChange('cartInput_'+x.productId,true,$index,2)" ng-focus="cartInputFocus()" ng-blur="cartInputBlur('cartInput_'+x.productId,true,$index,2)" ng-model="preSellCartInitNumArea2[$index]">
+      <i class="icon ion-ios-plus-outline" ng-click="plus($event, true, $index,2)"></i>
+    </div>
+    <div class="cartCurrentListC9" id={{"cartAlertPresell_"+x.productId}}>购买量必须大于{{presellLimitCountArea2[$index]}}</div>
+  </div>
+  <div class="cartSum" ng-if="preSellArea2.length > 0">
+    <div class="cartSumC1">总金额:</div>
+    <div class="cartSumC2">￥{{preSellAllPriceArea2}}</div>
+    <div class="cartSumC3" ng-click="goBuy(true,2)">
+      <div>去付款</div>
+    </div>
+  </div>
+
+  <div class="orderCommon1" ng-if="edFlag==0">亲,购物车里还没有商品哦!</div>
+
+  <div style="width:100%;height:20px;"></div>
+</ion-scroll>
+
+<div class="cartCollect" ng-if="edFlag>=1">
+  <div class="cartCollectC1"><div ng-if="selectedAll" ng-click="cartAllList(false)"><img style="display: inline" src="img/check.png" alt=""></div></div>
+  <div class="cartCollectC1"><div ng-if="!selectedAll" ng-click="cartAllList(true)"><img style="display: none" src="img/check.png" alt=""></div></div>
+  <div class="cartCollectC2">全选</div>
+  <div class="cartCollectC3" ng-click="cartCollect()">移到收藏夹</div>
+  <div class="cartCollectC4" ng-click="cartRemove()">删除</div>
+</div>

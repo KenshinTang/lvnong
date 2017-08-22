@@ -1,0 +1,17 @@
+<ion-nav-view name="useFeekback">
+  <ion-view view-title="使用反馈">
+    <!--头部标题-->
+    <ion-header-bar class="positive useFeekbackBar">
+      <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+      <div class="topBarCommonC2">使用反馈</div>
+      <div class="topBarCommonC3" ng-click="jsGo()"><div class="editorCommon">发送</div></div>
+    </ion-header-bar>
+    <div class="has-header" style="position:absolute;width:100%;">
+      <div class="useFeekbackSeparate"></div>
+      <div class="useFeekbackText"><textarea ng-model="content" ng-change="changeContent(content)" placeholder="请留下您的宝贵意见和建议~" ng-focus="Focus1()" ng-blur="Blur1()"></textarea></div>
+      <div class="useFeekbackSeparate2"></div>
+      <div class="useFeekbackContact"><input type="text" ng-model="contactWay" ng-change="changeContactWay(contactWay)" placeholder="请您留下联系方式(电话/QQ/邮箱)" ng-focus="Focus1()" ng-blur="Blur1()"></div>
+      <div class="useFeekbackSeparate3"></div>
+    </div>
+  </ion-view>
+</ion-nav-view>

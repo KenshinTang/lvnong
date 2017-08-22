@@ -1,0 +1,43 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1"></div>
+  <div class="topBarCommonC2">农场</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content scroll="false" lazy-scroll>
+  <div id="farmTopId" class="farmTop" ng-click="farmClassSelection()">
+    <div class="farmTopC1" id="farmTopC1Id">{{classOne[0].name}}</div>
+    <div class="farmTopC2"><i class="icon ion-arrow-down-b"></i></div>
+  </div>
+  <ion-scroll class="activityClass" lazy-scroll>
+    <div class="farmList" ng-repeat="x in farmListArr" ng-click="jsGo('tab.farmDetail',x)">
+      <div class="farmListC1"><img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+      <div class="farmListC2">
+        <div class="farmListC4">{{x.name}}</div>
+        <div class="farmListC5">{{x.address}}</div>
+        <div ng-if="x.distance" class="farmListC5">距离:{{x.distance}}千米</div>
+        <div ng-if="!x.distance" class="farmListC5">距离:未知</div>
+      </div>
+      <div class="farmListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+
+    <div class="goodsDetailReadyBottom" ng-if="!loadMoreDataEnable">已加载全部</div>
+    <ion-infinite-scroll id="infiniteScrollFarmId"
+                         on-infinite="loadMoreData()"
+                         distance="1%">
+    </ion-infinite-scroll>
+  </ion-scroll>
+
+  <ion-scroll class="presellAllCategory1" id="farmScrollId" ng-if="farmFlag">
+    <div class="presellAllCategoryC1" ng-repeat="x in classOne" ng-click="farmSelectionClassOne(x)" style='{{x.id==categoryId?"background:rgb(249,249,249);color:#59A93B;":"background:white;color:black;"}}'>
+      <div class="presellAllCategoryC2">{{x.name}}</div>
+    </div>
+  </ion-scroll>
+
+  <div class="presellAllCategory1" id="farmScrollId" ng-if="!farmFlag">
+    <div class="presellAllCategoryC1" ng-repeat="x in classOne" ng-click="farmSelectionClassOne(x)" style='{{x.id==categoryId?"background:rgb(249,249,249);color:#59A93B;":"background:white;color:black;"}}'>
+      <div class="presellAllCategoryC2">{{x.name}}</div>
+    </div>
+  </div>
+
+
+</ion-content>

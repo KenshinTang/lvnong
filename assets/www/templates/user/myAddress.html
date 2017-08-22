@@ -1,0 +1,53 @@
+<ion-header-bar class="bar-positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">收货地址管理</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content scroll="false">
+  <ion-scroll class="myaddressScroll" direction="y">
+    <div class="myaddressList" ng-repeat="item in addressList">
+      <div class="myaddressListC1 myaddressActive" ng-if="item.defaultFlag" ng-click="select($index,true,item.id)">
+        <div class="myaddressListC2">
+          <div class="myaddressListC4">
+            <div class="myaddressListC5">收货人:</div>
+            <div class="myaddressListC6">{{item.name}}</div>
+          </div>
+          <div class="myaddressListC4">
+            <div class="myaddressListC5">联系电话:</div>
+            <div class="myaddressListC6">{{item.mobile}}</div>
+          </div>
+          <div class="myaddressListC4">
+            <div class="myaddressListC5">收货地址:</div>
+            <div class="myaddressListC6"><span style="display: inline-block;">[默认]</span><span>{{item.address}}&nbsp;&nbsp;{{item.street}}</span></div>
+          </div>
+        </div>
+        <div class="myaddressListC3">
+          <i class="icon ion-ios-arrow-right"></i>
+        </div>
+      </div>
+      <div class="myaddressListC1" ng-if="!item.defaultFlag" ng-click="select($index,false,item.id)">
+        <div class="myaddressListC2">
+          <div class="myaddressListC4">
+            <div class="myaddressListC5">收货人:</div>
+            <div class="myaddressListC6">{{item.name}}</div>
+          </div>
+          <div class="myaddressListC4">
+            <div class="myaddressListC5">联系电话:</div>
+            <div class="myaddressListC6">{{item.mobile}}</div>
+          </div>
+          <div class="myaddressListC4">
+            <div class="myaddressListC5">收货地址:</div>
+            <div class="myaddressListC6">{{item.address}}{{item.street}}</div>
+          </div>
+        </div>
+        <div class="myaddressListC3">
+          <i class="icon ion-ios-arrow-right"></i>
+        </div>
+      </div>
+    </div>
+    <!--<div class="myaddressBottomD"></div>-->
+  </ion-scroll>
+  <!--底部添加地址-->
+  <div class="myaddressBottomD"></div>
+  <div class="myaddressBottomAdd" ng-click="jsGo('tab.addAddress')">+新增地址</div>
+</ion-content>

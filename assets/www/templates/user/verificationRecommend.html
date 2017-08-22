@@ -1,0 +1,11 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">推荐码</div>
+  <div class="topBarCommonC3" ng-click="varify()"><div class="editorCommon">完成</div></div>
+</ion-header-bar>
+<ion-content>
+  <div class="verificationRecommendyzm">
+    <input ng-model="varifyCode" ng-change="changeCode(varifyCode)" type="text" placeholder="请输入推荐码" ng-focus="Focus1()" ng-blur="Blur1()">
+  </div>
+
+</ion-content>

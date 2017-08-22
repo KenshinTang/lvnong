@@ -1,0 +1,93 @@
+<ion-header-bar style="height:0px !important;padding:0px;">
+</ion-header-bar>
+<ion-content style="margin-top:-45px;" lazy-scroll>
+  <div class="userTopTheme">
+    <div class="userTopThemeC1" ng-click="jsGo('tab.personal')"><img image-lazy-src={{userImg}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+    <div class="userTopThemeC2" ng-click="jsGo('tab.personal')">
+      <div class="userTopThemeC4">{{mobileModify.mobile}}</div>
+      <div class="userTopThemeC5">
+        <div class="userTopThemeC6">推荐码</div>
+        <div class="userTopThemeC7">{{user.promoterCode}}</div>
+      </div>
+    </div>
+    <div class="userTopThemeC3">
+      <div class="userTopThemeC9" ng-click="jsGo('tab.systemInformation')"><img src="img/information.png" alt=""></div>
+      <div class="userTopThemeC8" ng-click="jsGo('tab.personal')"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+  </div>
+  <div class="userMyorder">
+    <div class="userMyorderC1" ng-click="jsGo('tab.myAllOrder')">
+      <div class="userMyorderC3">我的订单</div>
+      <div class="userMyorderC4">查看全部订单</div>
+      <div class="userMyorderC5"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+    <div class="userMyorderC2">
+      <div class="userMyorderC6" style="position:relative;" id="userOrderNumber1" ng-click="jsGo('tab.waitPayment')">
+        <div class="userMyorderC7"><img src="img/copy_dfk.png" alt=""></div>
+        <div class="userMyorderC8">待付款</div>
+      </div>
+      <div class="userMyorderC6" style="position:relative;" id="userOrderNumber2" ng-click="jsGo('tab.waitDeliverGoods')">
+        <div class="userMyorderC7"><img src="img/copy_dfh.png" alt=""></div>
+        <div class="userMyorderC8">待发货</div>
+      </div>
+      <div class="userMyorderC6" style="position:relative;" id="userOrderNumber3" ng-click="jsGo('tab.waitReceiveGoods')">
+        <div class="userMyorderC7"><img src="img/copy_dsh.png" alt=""></div>
+        <div class="userMyorderC8">待收货</div>
+      </div>
+      <div class="userMyorderC6" ng-click="jsGo('tab.completed')">
+        <div class="userMyorderC7"><img src="img/copy_ywc.png" alt=""></div>
+        <div class="userMyorderC8">已完成</div>
+      </div>
+    </div>
+  </div>
+  <div class="userSeparate"></div>
+  <div class="userListSum">
+    <div class="userList" ng-click="jsGo('tab.myAddress')">
+      <div class="userListC1"><img src="img/mydizhi.png" alt=""></div>
+      <div class="userListC2">我的地址</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+    <div class="userList" ng-click="jsGo('tab.distributionDescription')">
+      <div class="userListC1"><img src="img/peisongsm.png" alt=""></div>
+      <div class="userListC2">配送说明</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+    <div class="userList2" ng-click="jsGo('tab.goodsFeedback')">
+      <div class="userListC1"><img src="img/xuqiufk.png" alt=""></div>
+      <div class="userListC2">商品需求反馈</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+  </div>
+  <div class="userSeparate"></div>
+  <div class="userListSum">
+    <div class="userList" ng-click="jsGo('tab.myCoupon')">
+      <div class="userListC1"><img src="img/myyouhj.png" alt=""></div>
+      <div class="userListC2">我的优惠卷</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+    <div class="userList" ng-click="jsGo('share')">
+      <div class="userListC1"><img src="img/fenxpy.png" alt=""></div>
+      <div class="userListC2">分享给朋友</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+    <div class="userList2" ng-click="jsGo('tab.verificationRecommend')">
+      <div class="userListC1"><img src="img/yanztjm.png" alt=""></div>
+      <div class="userListC2">验证推荐码</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+  </div>
+  <div class="userSeparate"></div>
+  <div class="userListSum">
+    <div class="userList" ng-click="jsGo('call')">
+      <div class="userListC1"><img src="img/kefudh.png" alt=""></div>
+      <div class="userListC2">客服电话</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+    <div class="userList2" ng-click="jsGo('tab.more')">
+      <div class="userListC1"><img src="img/gengduo.png" alt=""></div>
+      <div class="userListC2">更多</div>
+      <div class="userListC3"><i class="icon ion-ios-arrow-right"></i></div>
+    </div>
+  </div>
+  <div class="userSeparate2"></div>
+</ion-content>

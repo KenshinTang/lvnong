@@ -1,0 +1,48 @@
+<ion-nav-view name="logistics">
+  <ion-view view-title="查看物流">
+    <ion-header-bar class="positive">
+      <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+      <div class="topBarCommonC2">物流信息</div>
+      <div class="topBarCommonC3"></div>
+    </ion-header-bar>
+    <ion-content style="background:#EDEDED;">
+      <!--<div class="logisticsList">-->
+        <!--<div class="logisticsListC1"><img src="" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>-->
+        <!--<div class="logisticsListC2">-->
+          <!--<div>快递单号:&nbsp;&nbsp;<span style="color:#158500;">{{11}}</span></div>-->
+          <!--<div>承运来源:&nbsp;&nbsp;<span style="">{{11}}</span></div>-->
+          <!--<div>联系电话:&nbsp;&nbsp;<span style="color:#3693CB;">{{11}}</span></div>-->
+          <!--<div>配送员:&nbsp;&nbsp;<span style="">{{11}}</span></div>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div class="logisticsTop">
+        <div>快递单号:&nbsp;&nbsp;<span style="color:#158500;">{{orderSelectLogisticsInfoArr.LogisticsNo}}</span></div>
+        <div>承运来源:&nbsp;&nbsp;<span style="">{{orderSelectLogisticsInfoArr.express_company}}</span></div>
+      </div>
+
+      <div class="logisticsSeparate"></div>
+      <div class="logisticsC1">尾流跟踪信息</div>
+
+      <div ng-repeat="x in orderSelectLogisticsInfoArr.list">
+        <div class="logisticsC2" ng-if="$index==0">
+          <div class="logisticsC3"><img src="img/wuliu1.png" style="height:80%;margin-top:16px;" alt=""></div>
+          <div class="logisticsC7">
+            <div class="logisticsC5">{{x.remark}}</div>
+            <div class="logisticsC6">{{x.datetime}}</div>
+          </div>
+        </div>
+        <div class="logisticsC2" ng-if="$index>0">
+          <div class="logisticsC3"><img src="img/wuliu2.png" alt=""></div>
+          <div class="logisticsC4">
+            <div class="logisticsC5">{{x.remark}}</div>
+            <div class="logisticsC6">{{x.datetime}}</div>
+          </div>
+        </div>
+      </div>
+
+
+    </ion-content>
+  </ion-view>
+</ion-nav-view>
+

@@ -1,0 +1,29 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">我的优惠券</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content>
+  <div class="myCouponTitle">
+    <div class="myCouponTitleC1 myCouponTitleActive" ng-click="noUseCP($event)">未使用</div>
+    <div class="myCouponTitleC1" ng-click="useCP($event)">已使用</div>
+    <div class="myCouponTitleC1" ng-click="expireCP($event)">已过期</div>
+  </div>
+  <div class="myCouponList">
+    <div class="myCouponList2" ng-repeat="item in list" ng-click="select($index,item.limitMoney)">
+      <div class="myCouponList5">
+        <div class="myCouponList3">
+          <div>￥</div>
+          <div>{{item.lessMoney}}</div>
+        </div>
+        <div class="myCouponList4">
+          <div>满{{item.limitMoney}}省{{item.lessMoney}}</div>
+          <div>{{item.startTime}}-{{item.endTime}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<div ng-if="orderEnter" ng-click="noUseCoupon()" style="position: fixed; left: 10px; right: 10px; bottom: 10px; width: auto; height: 40px; z-index: 999; text-align: center; font-size: 18px; line-height: 40px; border-radius: 10px; border: 1px solid #59A93B">
+  不使用优惠券
+</div>

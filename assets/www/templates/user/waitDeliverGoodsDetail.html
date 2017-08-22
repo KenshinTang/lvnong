@@ -1,0 +1,59 @@
+<ion-header-bar class="positive">
+  <div class="topBarCommonC1" ng-click="back()"><i class="icon ion-ios-arrow-left"></i></div>
+  <div class="topBarCommonC2">订单详情</div>
+  <div class="topBarCommonC3"></div>
+</ion-header-bar>
+<ion-content lazy-scroll>
+  <div class="myAllOrder1">
+    <div>买家已付款</div>
+    <div class="myAllOrder1C1">等待卖家发货</div>
+  </div>
+  <div class="myAllOrderAddress">
+    <div class="myAllOrderAddressC1"><i class="icon ion-ios-location-outline"></i></div>
+    <div class="myAllOrderAddressC2">
+      <div class="myAllOrderAddressC3">
+        <div class="myAllOrderAddressC4">收货人:</div>
+        <div class="myAllOrderAddressC5">{{orderDetailsArr.name}}&nbsp;&nbsp;&nbsp;&nbsp;{{orderDetailsArr.mobile}}</div>
+      </div>
+      <div class="myAllOrderAddressC3">
+        <div class="myAllOrderAddressC4">收货地址:</div>
+        <div class="myAllOrderAddressC5">{{orderDetailsArr.address}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="myAllOrderSeparate"></div>
+
+  <div class="myAllOrder2">
+    <div>订单编号:{{orderDetailsArr.order_id}}</div>
+    <div>创建时间:{{orderDetailsArr.created_time | date:'yyyy-MM-dd HH:mm'}}</div>
+    <div>付款时间:{{orderDetailsArr.pay_time | date:'yyyy-MM-dd HH:mm'}}</div>
+  </div>
+
+  <div class="myAllOrderList" ng-repeat="x in orderDetailsArr.list">
+    <div class="myAllOrderListC1"><img image-lazy-src={{x.image}} onload={$(this).fadeTo("slow",1);} style="opacity:0;" alt="" onerror="this.src='img/lvnongLogo3.png'"></div>
+    <div class="myAllOrderListC2">{{x.name}}</div>
+    <div class="myAllOrderListC3">
+      <div class="myAllOrderListC4">￥{{x.price}}/{{x.spec}}</div>
+      <div class="myAllOrderListC5"></div>
+    </div>
+    <div class="myAllOrderListC6">购买数量:{{x.quantity}}</div>
+  </div>
+  <div class="myAllOrderCashSum">
+    合计:
+    <span class="myAllOrderCashSumC1">￥{{orderDetailsArr.payable_menoy}}</span>
+    <span class="myAllOrderCashSumC2">(含物流费:￥{{orderDetailsArr.logistics_money}},已优惠:￥{{orderDetailsArr.coupon_money==null ? 0 : orderDetailsArr.coupon_money}})</span>
+  </div>
+
+  <div class="myAllOrder3" ng-click="jsGoCall()">
+    <i class="icon ion-ios-telephone-outline"></i>&nbsp;&nbsp;&nbsp;&nbsp;拨打电话
+  </div>
+
+  <div class="myAllOrderSeparate2"></div>
+
+  <div class="myAllOrderWaitGoods">
+    <div class="myAllOrderWaitGoodsC5" ng-click="alertInfo(orderDetailsArr.order_id)">提醒发货</div>
+    <div class="myAllOrderWaitGoodsC3">已付款,等待卖家发货</div>
+  </div>
+
+</ion-content>

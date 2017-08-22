@@ -1,0 +1,106 @@
+/*佣金排行*/
+.brokerage_head{height: 50px;line-height:50px;text-align: center;padding-left:10px;border-bottom: 1px solid #C6BFBF}
+.blank_range{height:50px;background-color: #F3F3F3;padding-top:10px;padding-left: 15px}
+.total_list{padding-top: 15px;padding-left: 15px;height:70px;}
+.asd{float: left}
+.total{float: left;padding-top:6px}
+.total1{margin-left: 10px}
+.total2{color: #5FB025}
+.total_chief{float: left;}
+.chief_tou{float: left;margin-left:15px}
+.total_words{float: left;margin-left:30px}
+.record_num{float: right;margin-top: 10px;margin-right: 10px}
+.white_line{border-bottom: 1px solid #C5BEBE;width:80%;float: right}
+.list_num{float: left;width: 46px;padding-top: 15px;padding-left: 15px}
+/*设置*/
+.wen_zi{float: left;margin-top: 15px;margin-left: 20px;}
+.set_head{height: 50px;}
+.yun_xu{width: 60px;float: left;margin-top: 15px;margin-left: 20px}
+.hua_dong{width:63px;float: right;margin-top:5px;margin-right: 15px}
+.hun_cun{height: 15px;background-color: #F2F2F3}
+.mei_gao{height: 50px;}
+.qin_chu{float: left;margin-top: 15px;margin-left:20px}
+.tu_you{float: right;margin-top:8px;margin-right: 30px}
+.gao_bai{height: 100px;}
+.bang_ge{height: 50px;border-bottom: 1px solid #F2F2F3}
+.wei_bu{height:175px;background-color:#F2F2F3;border: 1px solid white}
+.wei_bu2{height:50px;margin-top: 50px;width: 100%;background-color: white;text-align: center;line-height: 50px;color: red}
+.cun_cu{float: right;margin-right: 10px;margin-top: 16px}
+.alert{display: none; width:120px; height:40px;position: absolute; top:150px; left:33%; z-index: 5000;text-align: center;line-height: 40px;background-color:#70645F;border-radius: 10px;color: white}
+
+/*奖金纪录*/
+.total_money{width:70px ;float: left;margin-left:5px;margin-top: 17px}
+.lei_total{width: 35px;height: 35px;margin-top:15px;margin-left:20px;float: left}
+.total_kun{height:75px}
+
+/*提现记录*/
+.xian_kun{height:45px}
+.hi_img{width: 47%;float: left;}
+.top_total{width: 35px;height: 35px;margin-top:5px;margin-left:10px;float: left;}
+
+/*分享口令*/
+.kou_ling{height:100px}
+.ling_pai{width:60%;height:47px;border: 1px solid #86CF40;margin: auto;margin-top:55px;border-radius:20px;line-height: 45px;}
+
+/*关于*/
+.xie_hao{float: right;margin-top:13px;margin-right: 30px}
+
+/*个人资料*/
+.data_head{height: 50px;line-height:50px;text-align: center;padding-left:10px;}
+.data_left{float: left;}
+.blank_line{height:145px;background-image:url("../img/geren_banner.png");padding-top: 20px}
+.blank_line2{height:250px;background-color: #F0F0F0;padding-top:20%}
+.preserve{width:65%;height: 40px;background-color: #5FB025;margin: auto;line-height: 40px;text-align: center;color: white;border-radius: 3px}
+/*.person_right{float: right;}*/
+/*.person_right input{text-align: right}*/
+.gen_gai{float: left;margin-top: 15px}
+.xin_min{float: left;margin-top:8px}
+.ji_tu{float: right;margin-top: -8px;color: #D2D2D2}
+.xun_xiang{float: right;margin-right: 15px;color: #D2D2D2}
+
+/*会员等级*/
+.vip_head{height:200px;background-color:#83C344;position: relative;}
+.vip_aval{text-align: center;position: absolute;top:20px;left:32%;width: 115px}
+.vip_title{font-size: 18px;color:#EAEAE8;}
+
+/*等级详情*/
+.vip_words{width:30px;position: fixed;top:12px;z-index:1223;left:15%;}
+
+/*提现密码修改*/
+.password_head{height: 50px;line-height:50px;text-align: center;padding-left:10px;border-bottom: 1px solid #C6BFBF}
+.blank_bai{height:15px;background-color: #F3F3F3}
+.wrap{margin-left: 15px;width:70%}
+.blank_juli{border: 1px solid black}
+.get_code{background-color: #5FB025;float: right;color: white;width: 90px;height: 30px;line-height: 30px;border-radius: 5px;text-align: center}
+.retrieve_yy{width: 270px;
+  color: white;
+  height:50px;
+  margin: auto;
+  margin-top:40px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #5FB025;
+  border-radius: 5px;
+}
+.service{color:#5FB025}
+.retrieve_password{background-color:#F3F3F3;height: 300px;margin-top: -40px;padding-top: 30px;}
+.password_bar1{color:#898989;height:30px}
+.password_click{float: left;padding: 10px}
+.verify{width:250px;border: 0px solid black;padding-right: 10px}
+
+/*提现*/
+.uu input{
+  display : inline-block;
+  float: left;
+  border: 1px solid #E3E3E3;
+  width : 35px ;
+  height : 30px ;
+  outline : none ;
+  font-family : inherit ;
+  font-size : 28px ;
+  font-weight : inherit ;
+  text-align : center ;
+  line-height :30px ;
+  color:black;
+  background : rgba(255,255,255,0);
+}
